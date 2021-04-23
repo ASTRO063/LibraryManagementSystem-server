@@ -2,7 +2,7 @@ package com.librarymanagement.librarymanagementsystem_server;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface IBooksRepository extends CrudRepository<Book, String> {
+public interface IBooksRepository extends CrudRepository<Book, Integer> {
 
     Iterable<Book> findByTitleContainingIgnoreCase(String title);
 

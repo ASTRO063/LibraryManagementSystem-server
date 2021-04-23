@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -19,6 +20,7 @@ public class BooksController {
     private IBooksRepository booksRepository;
 
     @PostMapping(path="/add")
+    @CrossOrigin(origins = "http://localhost:3000")
     public @ResponseBody Iterable<Book> addNewBook (@RequestBody List<Book> books){
         booksRepository.saveAll(books);
         return booksRepository.findAll();

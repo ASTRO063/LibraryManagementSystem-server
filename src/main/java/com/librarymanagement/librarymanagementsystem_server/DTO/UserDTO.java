@@ -1,15 +1,7 @@
-package com.librarymanagement.librarymanagementsystem_server;
+package com.librarymanagement.librarymanagementsystem_server.DTO;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "users")
-public class User {
-
+public class UserDTO {
     private String name;
-    @Id
     private String email;
     private int contact;
     private String password;

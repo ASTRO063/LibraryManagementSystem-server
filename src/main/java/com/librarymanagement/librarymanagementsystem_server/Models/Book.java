@@ -1,4 +1,4 @@
-package com.librarymanagement.librarymanagementsystem_server;
+package com.librarymanagement.librarymanagementsystem_server.Models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

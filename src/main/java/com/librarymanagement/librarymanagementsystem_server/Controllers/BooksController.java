@@ -1,6 +1,7 @@
-package com.librarymanagement.librarymanagementsystem_server;
+package com.librarymanagement.librarymanagementsystem_server.Controllers;
 
-import java.util.List;
+import com.librarymanagement.librarymanagementsystem_server.Models.Book;
+import com.librarymanagement.librarymanagementsystem_server.Services.BooksServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,22 +17,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping(path = "/book")
 public class BooksController {
     @Autowired
-    private IBooksRepository booksRepository;
+    private BooksServices services;
 
     @PostMapping(path = "/add")
     @CrossOrigin(origins = "http://localhost:3000")
-    public @ResponseBody Iterable<Book> addNewBook(@RequestBody List<Book> books) {
-        booksRepository.saveAll(books);
-        return booksRepository.findAll();
+    public @ResponseBody Iterable<Book> addNewBook(@RequestBody Iterable<Book> books) {
+        return services.saveBooks(books);
     }
 
     @GetMapping(path = "/all")
     public @ResponseBody Iterable<Book> getAllBooks() {
-        return booksRepository.findAll();
+        return services.fetchAllBooks();
     }
 
     @GetMapping(path = "/search")
     public @ResponseBody Iterable<Book> search(@RequestParam(value = "title", required = true) String title) {
-        return booksRepository.findByTitleContainingIgnoreCase(title);
+        return services.fetchbooks(title);
     }
 }

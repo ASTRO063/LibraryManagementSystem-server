@@ -5,3 +5,4 @@ bin/
 .project
 .settings/
 target/classes/.DS_Store
+.vscode/
